@@ -308,8 +308,9 @@ public abstract class AbstractSocketAppender<E> extends AppenderBase<E>
    * @return
    */
   BlockingQueue<E> newBlockingQueue(int queueSize) {
+      
     return queueSize <= 0 ? 
-        new SynchronousQueue<E>() : new ArrayBlockingQueue<E>(queueSize);
+        new LinkedBlockingDeque<E>() : new ArrayBlockingQueue(queueSize);
   }
   
   /**
